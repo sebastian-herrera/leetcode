@@ -20,3 +20,6 @@ build/
 *.class
 *.o
 *.exe
+
+# ai
+repomix*
