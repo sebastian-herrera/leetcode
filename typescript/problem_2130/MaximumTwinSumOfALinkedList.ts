@@ -9,19 +9,36 @@
  *     }
  * }
  */
-export function reverseList(head: ListNode | null): ListNode | null {
-  let prev = null,
-    curr = head;
+export function pairSum(head: ListNode | null): number {
+  let slow = head,
+    fast = head;
 
-  while (curr) {
-    let nxt = curr.next;
-
-    curr.next = prev;
-    prev = curr;
-    curr = nxt;
+  while (fast?.next) {
+    slow = slow!.next;
+    fast = fast.next.next;
   }
 
-  return prev;
+  let prev = null,
+    cur = slow;
+
+  while (cur) {
+    let nxt = cur.next;
+    cur.next = prev;
+    prev = cur;
+    cur = nxt;
+  }
+
+  let ans = 0;
+
+  while (head && prev) {
+    let sum = head.val + prev.val;
+    if (sum > ans) ans = sum;
+
+    head = head?.next;
+    prev = prev.next;
+  }
+
+  return ans;
 }
 
 // === === === === ===
@@ -46,13 +63,4 @@ export function arrayToList(arr: number[]): ListNode | null {
     current = current.next;
   }
   return head;
-}
-export function listToArray(head: ListNode | null): number[] {
-  const result: number[] = [];
-  let current = head;
-  while (current !== null) {
-    result.push(current.val);
-    current = current.next;
-  }
-  return result;
 }
