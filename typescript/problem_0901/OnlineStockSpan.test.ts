@@ -1,7 +1,7 @@
 import { expect, test } from 'vitest';
 import { StockSpanner } from './OnlineStockSpan.ts';
 
-const scenarios: number[][][] = [
+const scenarios: [number, number][][] = [
   [
     [100, 1],
     [80, 1],
