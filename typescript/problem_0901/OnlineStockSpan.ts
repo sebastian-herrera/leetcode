@@ -1,25 +1,21 @@
 export class StockSpanner {
   private stack: [number, number][]; // price, day
-  private day: number;
 
   constructor() {
     this.stack = [];
-    this.day = 1;
   }
 
   next(price: number): number {
+    let span = 1;
+
     // monotonic decreasing
     while (this.stack.length && price >= this.stack[this.stack.length - 1][0]) {
-      this.stack.pop();
+      const top = this.stack.pop();
+      if (top) span += top[1];
     }
 
-    this.stack.push([price, this.day]);
-    this.day++;
-
-    const r = this.stack[this.stack.length - 1][1];
-    const l = this.stack[this.stack.length - 2]?.[1];
-
-    return r - (l ?? 0);
+    this.stack.push([price, span]);
+    return span;
   }
 }
 
