@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest';
-import { arrayToTree } from '../common/tree.ts';
+import { arrayToTree } from '../common';
 import { maxDepth } from './MaximumDepthOfBinaryTree.ts';
 
 test('maxDepth', () => {

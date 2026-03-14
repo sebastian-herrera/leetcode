@@ -1,5 +1,6 @@
 import { expect, test } from 'vitest';
-import { arrayToList, listToArray, swapPairs } from './SwapNodesInPairs.ts';
+import { arrayToList, listToArray } from '../common';
+import { swapPairs } from './SwapNodesInPairs.ts';
 
 test('swapPairs', () => {
   const testCases = [

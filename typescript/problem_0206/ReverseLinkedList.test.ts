@@ -1,5 +1,6 @@
 import { expect, test } from 'vitest';
-import { arrayToList, listToArray, reverseList } from './ReverseLinkedList.ts';
+import { arrayToList, listToArray } from '../common';
+import { reverseList } from './ReverseLinkedList.ts';
 
 test('reverseList', () => {
   const testCases = [

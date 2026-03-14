@@ -1,5 +1,6 @@
 import { expect, test } from 'vitest';
-import { arrayToList, pairSum } from './MaximumTwinSumOfALinkedList.ts';
+import { arrayToList } from '../common';
+import { pairSum } from './MaximumTwinSumOfALinkedList.ts';
 
 test('pairSum', () => {
   const testCases = [

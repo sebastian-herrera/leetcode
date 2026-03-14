@@ -1,5 +1,6 @@
 import { expect, test } from 'vitest';
-import { arrayToList, listToArray, reverseBetween } from './ReverseLinkedListIi.ts';
+import { arrayToList, listToArray } from '../common';
+import { reverseBetween } from './ReverseLinkedListIi.ts';
 
 test('reverseBetween', () => {
   const testCases = [

@@ -1,5 +1,6 @@
 import { expect, test } from 'vitest';
-import { arrayToList, deleteDuplicates, listToArray } from './RemoveDuplicatesFromSortedList.ts';
+import { arrayToList, listToArray } from '../common';
+import { deleteDuplicates } from './RemoveDuplicatesFromSortedList.ts';
 
 test('deleteDuplicates', () => {
   const testCases = [

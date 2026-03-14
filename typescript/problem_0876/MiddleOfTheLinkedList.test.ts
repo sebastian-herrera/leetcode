@@ -1,5 +1,6 @@
 import { expect, test } from 'vitest';
-import { arrayToList, listToArray, middleNode } from './MiddleOfTheLinkedList.ts';
+import { arrayToList, listToArray } from '../common';
+import { middleNode } from './MiddleOfTheLinkedList.ts';
 
 test('middleNode', () => {
   const testCases = [
