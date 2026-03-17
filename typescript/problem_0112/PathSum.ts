@@ -29,3 +29,24 @@ export function hasPathSum(root: TreeNode | null, targetSum: number): boolean {
 
   return dfs(root, 0);
 }
+
+// // iterative way
+// export function hasPathSum(root: TreeNode | null, targetSum: number): boolean {
+//   if (!root) return false;
+
+//   const stack: [TreeNode, number][] = [[root, 0]];
+
+//   while (stack.length) {
+//     let [node, cur] = stack.pop()!;
+
+//     if (node.left === null && node.right === null) {
+//       if (node.val + cur === targetSum) return true;
+//     }
+
+//     cur += node.val;
+//     if (node.left) stack.push([node.left, cur]);
+//     if (node.right) stack.push([node.right, cur]);
+//   }
+
+//   return false;
+// }
