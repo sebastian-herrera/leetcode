@@ -25,3 +25,22 @@ export function isSameTree(p: TreeNode | null, q: TreeNode | null): boolean {
 
   return l && r;
 }
+
+// // iterative way
+// export function isSameTree(p: TreeNode | null, q: TreeNode | null): boolean {
+//   const stack: [TreeNode | null, TreeNode | null][] = [[p, q]];
+
+//   while (stack.length) {
+//     const [nodeP, nodeQ] = stack.pop()!;
+
+//     if (nodeP === null && nodeQ === null) continue;
+
+//     if (nodeP === null || nodeQ === null) return false;
+//     if (nodeP.val !== nodeQ.val) return false;
+
+//     stack.push([nodeP.left, nodeQ.left]);
+//     stack.push([nodeP.right, nodeQ.right]);
+//   }
+
+//   return true;
+// }
