@@ -41,3 +41,9 @@ export function arrayToTree(arr: (number | null)[]): TreeNode | null {
 
   return root;
 }
+
+export function findNode(root: TreeNode | null, val: number): TreeNode | null {
+  if (!root) return null;
+  if (root.val === val) return root;
+  return findNode(root.left, val) || findNode(root.right, val);
+}
