@@ -18,4 +18,16 @@ export function lowestCommonAncestor(
   root: TreeNode | null,
   p: TreeNode | null,
   q: TreeNode | null,
-): TreeNode | null {}
+): TreeNode | null {
+  if (!root) return null;
+
+  if (p === root || q === root) return root;
+
+  const l = lowestCommonAncestor(root.left, p, q);
+  const r = lowestCommonAncestor(root.right, p, q);
+
+  if (l && r) return root;
+
+  if (l) return l;
+  return r;
+}

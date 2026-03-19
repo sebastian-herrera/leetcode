@@ -26,6 +26,12 @@ const cases: {
     q: 2,
     expected: 1,
   },
+  {
+    data: [3, 5, 1, 6, 2, null, null, null, null, 7, 4],
+    p: 6,
+    q: 4,
+    expected: 5,
+  },
 ];
 
 test.each(cases)('lowestCommonAncestor for tree $data with p=$p, q=$q', ({
