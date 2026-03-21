@@ -14,26 +14,42 @@ import type { TreeNode } from '../common';
  * }
  */
 
-//  iterative way
 export function minDepth(root: TreeNode | null): number {
-  if (!root) return 0;
+  const dfs = (node: TreeNode | null): number => {
+    if (!node) return 0;
 
-  const stack: [TreeNode | null, number][] = [[root, 1]];
-  let ans = Infinity;
+    if (!node.left) return dfs(node.right) + 1;
+    if (!node.right) return dfs(node.left) + 1;
 
-  while (stack.length) {
-    const [node, depth] = stack.pop()!;
+    const l = dfs(node.left);
+    const r = dfs(node.right);
 
-    if (!node) continue;
+    return Math.min(l, r) + 1;
+  };
 
-    if (node.left === null && node.right === null) {
-      ans = Math.min(ans, depth);
-      continue;
-    }
-
-    stack.push([node.left, depth + 1]);
-    stack.push([node.right, depth + 1]);
-  }
-
-  return ans;
+  return dfs(root);
 }
+
+//  iterative way
+// export function minDepth(root: TreeNode | null): number {
+//   if (!root) return 0;
+
+//   const stack: [TreeNode | null, number][] = [[root, 1]];
+//   let ans = Infinity;
+
+//   while (stack.length) {
+//     const [node, depth] = stack.pop()!;
+
+//     if (!node) continue;
+
+//     if (node.left === null && node.right === null) {
+//       ans = Math.min(ans, depth);
+//       continue;
+//     }
+
+//     stack.push([node.left, depth + 1]);
+//     stack.push([node.right, depth + 1]);
+//   }
+
+//   return ans;
+// }
