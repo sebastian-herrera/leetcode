@@ -5,8 +5,8 @@ export class TreeNode {
 
   constructor(val: number, left?: TreeNode | null, right?: TreeNode | null) {
     this.val = val;
-    this.left = left ?? null;
-    this.right = right ?? null;
+    this.left = left ? left : null;
+    this.right = right ? right : null;
   }
 }
 
