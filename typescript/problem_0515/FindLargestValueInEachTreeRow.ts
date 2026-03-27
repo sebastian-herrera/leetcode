@@ -14,25 +14,27 @@ import type { TreeNode } from '../common';
  * }
  */
 
-export function rightSideView(root: TreeNode | null): number[] {
+export function largestValues(root: TreeNode | null): number[] {
   const ans: number[] = [];
 
   if (!root) return [];
   let queue = [root];
 
   while (queue.length) {
-    const nodesInCurLevel = queue.length;
-    const nextQueue: TreeNode[] = [];
+    const curLevelNodes = queue.length;
+    const nextQueue = [];
+    let curMax = queue[0].val;
 
-    ans.push(queue[nodesInCurLevel - 1].val);
+    for (let i = 0; i < curLevelNodes; i++) {
+      const node = queue[i];
 
-    for (let i = 0; i < nodesInCurLevel; i++) {
-      const node: TreeNode = queue[i];
+      curMax = Math.max(curMax, node.val);
 
       if (node.left) nextQueue.push(node.left);
       if (node.right) nextQueue.push(node.right);
     }
 
+    ans.push(curMax);
     queue = nextQueue;
   }
 
