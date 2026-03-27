@@ -47,3 +47,7 @@ export function findNode(root: TreeNode | null, val: number): TreeNode | null {
   if (root.val === val) return root;
   return findNode(root.left, val) || findNode(root.right, val);
 }
+
+export function getNodesValues(nodes: TreeNode[]): number[] {
+  return nodes.map(node => node.val);
+}
