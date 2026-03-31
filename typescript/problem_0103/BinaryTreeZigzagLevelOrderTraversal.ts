@@ -1,4 +1,4 @@
-import type { TreeNode } from '../common';
+import { Queue, type TreeNode } from '../common';
 
 /**
  * Definition for a binary tree node.
@@ -16,26 +16,27 @@ import type { TreeNode } from '../common';
 
 export function zigzagLevelOrder(root: TreeNode | null): number[][] {
   if (!root) return [];
-  let curLevel = [root];
+  const ans: number[][] = [];
 
-  const ans: number[][] = [[root.val]];
+  const q = new Queue([root]);
 
-  while (curLevel.length) {
-    const curNodes = curLevel.length;
-    const nextLevel: TreeNode[] = [];
+  while (!q.isEmpty()) {
+    const isEven = ans.length % 2 === 0;
 
-    for (let i = 0; i < curNodes; i++) {
-      const node = curLevel[i];
+    const curSize = q.size();
+    const nextLevel: number[] = Array(curSize);
 
-      if (node.left) nextLevel.push(node.left);
-      if (node.right) nextLevel.push(node.right);
+    for (let i = 0; i < curSize; i++) {
+      const node = q.pop()!;
+
+      const idx = isEven ? i : curSize - i - 1;
+      nextLevel[idx] = node.val;
+
+      if (node.left) q.push(node.left);
+      if (node.right) q.push(node.right);
     }
 
-    const isOdd = ans.length % 2;
-    const temp = nextLevel.map(node => node.val);
-
-    if (nextLevel.length) ans.push(isOdd ? temp.reverse() : temp);
-    curLevel = nextLevel;
+    if (nextLevel.length) ans.push(nextLevel);
   }
 
   return ans;
