@@ -14,21 +14,34 @@ import type { TreeNode } from '../common';
  * }
  */
 
-// iterative
 export function rangeSumBST(root: TreeNode | null, low: number, high: number): number {
   if (!root) return 0;
 
   let ans = 0;
-  const stack = [root];
 
-  while (stack.length) {
-    const node = stack.pop()!;
+  if (low <= root.val && root.val <= high) ans += root.val;
 
-    if (low <= node.val && node.val <= high) ans += node.val;
-
-    if (node.left && low < node.val) stack.push(node.left);
-    if (node.right && node.val < high) stack.push(node.right);
-  }
+  if (low < root.val) ans += rangeSumBST(root.left, low, high);
+  if (root.val < high) ans += rangeSumBST(root.right, low, high);
 
   return ans;
 }
+
+// iterative
+// export function rangeSumBST(root: TreeNode | null, low: number, high: number): number {
+//   if (!root) return 0;
+
+//   let ans = 0;
+//   const stack = [root];
+
+//   while (stack.length) {
+//     const node = stack.pop()!;
+
+//     if (low <= node.val && node.val <= high) ans += node.val;
+
+//     if (node.left && low < node.val) stack.push(node.left);
+//     if (node.right && node.val < high) stack.push(node.right);
+//   }
+
+//   return ans;
+// }
