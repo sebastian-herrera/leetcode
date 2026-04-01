@@ -1,4 +1,4 @@
-import type { TreeNode } from '../common';
+import { Queue, type TreeNode } from '../common';
 
 /**
  * Definition for a binary tree node.
@@ -28,3 +28,21 @@ export function isValidBST(root: TreeNode | null): boolean {
 
   return dfs(root, -Infinity, Infinity);
 }
+
+// BFS
+// export function isValidBST(root: TreeNode | null): boolean {
+//   if (!root) return true;
+
+//   const q = new Queue<[TreeNode, number, number]>([[root, -Infinity, Infinity]]);
+
+//   while (!q.isEmpty()) {
+//     const [node, small, large] = q.pop()!;
+
+//     if (small >= node.val || node.val >= large) return false;
+
+//     if (node.left) q.push([node.left, small, node.val]);
+//     if (node.right) q.push([node.right, node.val, large]);
+//   }
+
+//   return true;
+// }
