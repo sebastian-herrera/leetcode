@@ -22,3 +22,28 @@ export function insertIntoBST(root: TreeNode | null, val: number): TreeNode | nu
 
   return root;
 }
+
+// iterative
+// export function insertIntoBST(root: TreeNode | null, val: number): TreeNode | null {
+//   if (!root) return new TreeNode(val);
+
+//   let cur = root;
+
+//   while (true) {
+//     if (cur.val > val) {
+//       if (!cur.left) {
+//         cur.left = new TreeNode(val);
+//         break;
+//       }
+//       cur = cur.left;
+//     } else {
+//       if (!cur.right) {
+//         cur.right = new TreeNode(val);
+//         break;
+//       }
+//       cur = cur.right;
+//     }
+//   }
+
+//   return root;
+// }
